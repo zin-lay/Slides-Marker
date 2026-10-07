@@ -1,0 +1,11 @@
+{
+  "name": "nexora-slide-maker",
+  "version": "1.0.0",
+  "description": "Outline-to-PowerPoint slide maker. Turn an outline or notes into a professional, full-resolution .pptx (and PDF) locally — AI optional, never required.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "check": "node scripts/check.js" },
+  "engines": { "node": ">=18.17" },
+  "license": "MIT",
+  "private": true,
+  "dependencies": { "pptxgenjs": "3.12.0" }
+}

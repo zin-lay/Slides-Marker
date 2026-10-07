@@ -1,0 +1,12 @@
+services:
+  slidemaker:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3200
+    ports:
+      - "127.0.0.1:3200:3200"
