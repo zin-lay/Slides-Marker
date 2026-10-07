@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slide Maker</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script src="pptxgen.bundle.js"></script>
+<script src="mammoth.browser.min.js"></script>
+<script src="slides.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <img class="logo" src="logo.png" srcset="logo.png 1x, logo@2x.png 2x" alt="Nexora Tech" width="228" height="120">
+      <div class="brand-text">
+        <h1>Slide Maker</h1>
+        <p>Turn an outline or notes into a professional PowerPoint — editable and full-resolution.</p>
+      </div>
+    </div>
+    <span class="model" id="engine">Ready</span>
+  </header>
+
+  <div class="grid">
+    <!-- OUTLINE / OPTIONS -->
+    <section class="pane controls" aria-labelledby="src-h">
+      <h2 id="src-h">Outline</h2>
+
+      <div class="field">
+        <div class="outline-bar">
+          <button class="btn ghost small" id="loadFile" type="button">⬆ Upload .txt / .docx / .md</button>
+          <button class="btn ghost small" id="reset" type="button">Load sample</button>
+        </div>
+        <textarea id="outline" spellcheck="false" aria-label="Outline"
+          placeholder="Write or paste an outline, or drag a .txt/.docx/.md file here."></textarea>
+        <p id="hint">Three styles work: <b>Markdown</b> (#, ##, ###, -), <b>“Slide 1 — …”</b> with plain lines, or simple indented text. Blank lines separate slides.</p>
+        <input type="file" id="file" accept=".txt,.md,.markdown,.docx,.doc" hidden>
+      </div>
+
+      <details class="ai" id="aiBox">
+        <summary>Draft an outline with AI (optional)</summary>
+        <div class="ai-body">
+          <input type="text" id="topic" placeholder="Topic or paste rough notes, e.g. “Q3 security review for the board”">
+          <div class="ai-row">
+            <label for="nslides">Slides</label>
+            <input type="number" id="nslides" min="3" max="20" value="8">
+            <button class="btn ghost" id="draft" type="button">Draft</button>
+            <button class="btn ghost" id="draftStop" type="button" hidden>Stop</button>
+          </div>
+          <p class="ai-note" id="aiNote"></p>
+        </div>
+      </details>
+
+      <div class="field row">
+        <div>
+          <label class="l" for="theme">Theme</label>
+          <select id="theme"></select>
+        </div>
+        <div>
+          <label class="l" for="fmt">Download</label>
+          <select id="fmt">
+            <option value="pptx" selected>PowerPoint (.pptx)</option>
+            <option value="pdf">PDF</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="make" type="button">Preview</button>
+        <button class="btn" id="download" type="button">Download</button>
+      </div>
+      <p class="notice" id="notice" hidden></p>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="pane result" aria-labelledby="out-h">
+      <div class="out-head">
+        <h2 id="out-h">Preview</h2>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div id="deck" class="deck"><p class="empty">Write or paste an outline, then choose Preview. Your slides appear here, and Download gives you an editable PowerPoint.</p></div>
+    </section>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
